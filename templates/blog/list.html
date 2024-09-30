@@ -1,0 +1,150 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block content%}
+<div class="inner-page-banner-section">
+    <div class="container">
+    <div class="row">
+    <div class="col-lg-12">
+    <div class="inner-page-banner-wrapper" style="background-image: url(/static/assets/image/Background-7.png);">
+    <div class="banner-content">
+    <h1>Articles</h1>
+    <p>Relax and enjoy...</p>
+    <ul class="breadcrumb-list">
+    <li><a href="/">Home</a></li>
+    <li>Articles</li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    
+    
+    <div class="blog-post-8 pt-70">
+    <div class="container">
+    <div class="row g-lg-4 gy-5">
+    <div class="col-lg-8">
+    <div class="row gy-5 mb-50">
+        {%for post in posts%}
+    <div class="col-md-6">
+    <div class="blog-card2 two">
+    <div class="blog-card-img-wrap">
+    <a href="{%url 'blog:post-detail' post.publish.year post.publish.month post.publish.day post.slug%}"><img src="{%static 'assets/image/blog-img-1.png'%}" alt></a>
+    <ul>
+    <li><a class="category" href="#">{{post.category}}</a></li>
+    </ul>
+    </div>
+    <div class="blog-content">
+    <ul class="blog-meta">
+    <li>
+    <a href="#">{{post.author}}</a>
+    </li>
+    <li>
+    <a class="publish-date" href="">{{post.publish | date}}</a>
+    </li>
+    </ul>
+    <h4><a href="{%url 'blog:post-detail' post.publish.year post.publish.month post.publish.day post.slug%}">{{post.title}}</a></h4>
+    </div>
+    </div>
+    </div>
+    {%endfor%}
+    </div>
+
+    {%include 'pagination.html' with page=posts%}
+    
+    <!-- <div class="load-more-btn">
+    <a href="#" class="hover-btn">
+    LOAD MORE
+    <svg class="arrow" width="10" height="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1 9L9 1M9 1C7.22222 1.33333 3.33333 2 1 1M9 1C8.66667 2.66667 8 6.33333 9 9" stroke="#191919" stroke-width="1.5" stroke-linecap="round"></path>
+    </svg>
+    </a>
+    </div> -->
+    </div>
+    <div class="col-lg-4 ">
+    <div class="life-style-sidebar">
+    <div class="sidebar-widget driscription">
+    <div class="header-logo pb-15">
+        <a href="/"><img alt="image" class="img-fluid dark"
+            src="{%static 'assets/image/quirkpress-dark.png' %}"></a>
+    <a href="/"><img alt="image" class="img-fluid light"
+            src="{%static 'assets/image/quirkpress-light.png'%}"></a>
+    </div>
+    <p>QuirkPress is a lively blog that celebrates the unconventional with quirky trends, unique lifestyle tips, and offbeat stories.</p>
+
+    </div>
+    <div class="sidebar-widget featured-post">
+    <h6>Featured Posts</h6>
+    {%for post in featured_posts %}
+    <div class="recent-post mb-20">
+        <div class="recent-post-img">
+            <a href="{%url 'blog:post-detail' post.publish.year post.publish.month post.publish.day post.slug%}"><img src="{%static 'assets/image/sidebar-img1.png'%}"
+                    alt></a>
+        </div>
+        <div class="recent-post-content">
+            <p>{{post.publish | date}}</p>
+            <h5><a href="{%url 'blog:post-detail' post.publish.year post.publish.month post.publish.day post.slug%}">{{post.title}}</a></h5>
+        </div>
+    </div>
+    {%endfor%}
+  
+   
+   
+    </div>
+    <!-- <div class="sidebar-widget discover-post">
+    <h6 class="discover-title">Discover By Tags
+    <svg class="arrow" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1 9L9 1M9 1C7.22222 1.33333 3.33333 2 1 1M9 1C8.66667 2.66667 8 6.33333 9 9" stroke="white" stroke-width="1.5" stroke-linecap="round"></path>
+    </svg>
+    </h6>
+    <ul class="category">
+    <li>
+    <a href="life-style.html">Beauty (10)</a>
+    </li>
+    <li>
+    <a href="life-style.html">Parenting (03)</a>
+    </li>
+    <li>
+    <a href="life-style.html">Health (03)</a>
+    </li>
+    <li>
+    <a href="life-style.html">Events (04)</a>
+    </li>
+    <li>
+    <a href="life-style.html">Art (03)</a>
+    </li>
+    <li>
+    <a href="life-style.html">Food (06)</a>
+    </li>
+    <li>
+    <a href="life-style.html">Travel (02)</a>
+    </li>
+    </ul>
+    </div> -->
+    <div class="sidebar-widget about-section mb-40">
+        <ul class="category">
+            <li>
+            <a href="{%url 'blog:about'%}">About Us</a>
+            </li>
+            <li>
+            <a href="{%url 'blog:terms'%}">Terms &amp; Conditions</a>
+            </li>
+            <li>
+            <a href="{%url 'blog:privacy-policy'%}">Privacy Policy</a>
+            </li>
+            </ul>
+    </div>
+    <a href="https://themeforest.net/item/axleo-digital-agency-creative-portfolio-template/51144673" class="sidebar-add-image">
+    <img src="assets/image/life-style/Sidebar-ads.png" alt>
+    </a>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    
+    
+
+{%endblock content%}

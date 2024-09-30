@@ -1,0 +1,42 @@
+{%load widget_tweaks%}
+<div class="row">
+    <div class="col-lg-12">
+    <div class="inquiry-form ">
+    <div class="title">
+    <h4>Leave Your Comment:</h4>
+    </div>
+    <form method="post" action="{%url 'blog:post-comment' post.pk%}">
+        {%csrf_token%}
+    <div class="row">
+    <div class="col-md-6">
+    <div class="form-inner mb-20">
+    <label>Your Name* :</label>
+    {%render_field form.name placeholder='e.g John Doe'%}
+    </div>
+    </div>
+    <div class="col-md-6">
+    <div class="form-inner mb-20">
+    <label>Your Email* :</label>
+    {%render_field form.email placeholder='e.g email@mail.com'%}
+    </div>
+    </div>
+    <div class="col-md-12">
+    <div class="form-inner mb-15">
+    <label>Your Comments*</label>
+   {%render_field form.body placeholder='Type...'%}
+    </div>
+    </div>
+   
+    </div>
+    <div class="form-inner">
+    <button class="primary-btn1" data-text="Post Comment" type="submit">
+    <span> <svg class="arrow" width="10" height="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1 9L9 1M9 1C7.22222 1.33333 3.33333 2 1 1M9 1C8.66667 2.66667 8 6.33333 9 9" stroke="#191919" stroke-width="1.5" stroke-linecap="round"></path>
+    </svg>
+    SUBMIT COMMENT</span>
+    </button>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>

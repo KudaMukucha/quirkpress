@@ -1,0 +1,1521 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block content%}
+<div class="banner-area2 mb-60">
+    <div class="container">
+        <div class="row ">
+            <div class="col-lg-12 position-relative">
+                <div class="slider-btn-groups">
+                    <div class="slider-btn prev-2">
+                        <svg width="7" height="14" viewBox="0 0 7 14" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 7.00008L7 0L2.54545 7.00008L7 14L0 7.00008Z" />
+                        </svg>
+                        <span class="two"> PREV</span>
+                    </div>
+                    <div class="slider-btn next-2">
+                        <span>NEXT</span>
+                        <svg width="7" height="14" viewBox="0 0 7 14" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 7.00008L0 0L4.45455 7.00008L0 14L7 7.00008Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="swiper banner-slider2">
+                    <div class="swiper-wrapper">
+                        {%for post in posts%}
+                        <div class="swiper-slide">
+                            <div class="banner-card">
+                                <div class="banner-img">
+                                    {%if image%}
+                                    <img src="{{post.image.url}}" alt="{{post.title}}">
+                                    {%else%}
+                                    <img src="{%static 'assets/image/banner-img-1.png'%}" alt>
+                                    {%endif%}
+                                </div>
+                                <div class="banner-content">
+                                    <div class="catagory">
+                                        <a href="life-style.html">
+                                           {{post.category}}
+                                        </a>
+                                    </div>
+                                    <div class="banner-content-bottom">
+                                        <div class="author-area">
+                                            <ul>
+                                                <li>
+                                                    <a href="editor-profile.html">{{post.author}}</a>
+                                                </li>
+                                                <li>
+                                                    <a class="publish-date" href="life-style.html">
+                                                        <svg width="6" height="6" viewBox="0 0 6 6" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <circle cx="3" cy="3" r="3" fill="#C4C4C4" />
+                                                        </svg>
+                                                        {{post.publish | date}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <h2><a href="{%url 'blog:post-detail' post.publish.year post.publish.month post.publish.day post.slug%}">{{post.title}}</a></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {%endfor%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="discover-section mb-70">
+    <div class="container">
+        <div class="row mb-20">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h5>Discover Today’s</h5>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 position-relative">
+                <div class="slider-btn-groups">
+                    <div class="slider-btn prev-1">
+                        <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M0.416666 8.96667H15V7.71667H0.416666V8.96667Z"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M1.04115 7.71667C3.98115 7.71667 6.38281 10.3017 6.38281 13.0583V13.6833H5.13281V13.0583C5.13281 10.9658 3.26448 8.96667 1.04115 8.96667H0.416979V7.71667H1.04115Z">
+                            </path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M1.04115 8.96667C3.98115 8.96667 6.38281 6.38167 6.38281 3.625V3H5.13281V3.625C5.13281 5.71833 3.26448 7.71667 1.04115 7.71667H0.416979V8.96667H1.04115Z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="slider-btn next-1">
+                        <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M15.5833 8.96667H1V7.71667H15.5833V8.96667Z"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M14.9589 7.71667C12.0189 7.71667 9.61719 10.3017 9.61719 13.0583V13.6833H10.8672V13.0583C10.8672 10.9658 12.7355 8.96667 14.9589 8.96667H15.583V7.71667H14.9589Z">
+                            </path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M14.9589 8.96667C12.0189 8.96667 9.61719 6.38167 9.61719 3.625V3H10.8672V3.625C10.8672 5.71833 12.7355 7.71667 14.9589 7.71667H15.583V8.96667H14.9589Z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="swiper discover-slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="discover-content">
+                                <div class="number">
+                                    <span>01</span>
+                                </div>
+                                <div class="other-content">
+                                    <a href="life-style.html">05 January, 2024</a>
+                                    <h6><a href="standard-formate.html">Foodie Diaries: Recipes for Every
+                                            Occasion</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="discover-content">
+                                <div class="number">
+                                    <span>02</span>
+                                </div>
+                                <div class="other-content">
+                                    <a href="life-style.html">05 January, 2024</a>
+                                    <h6><a href="standard-formate.html">Foodie Diaries: Recipes for Every
+                                            Occasion</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="discover-content">
+                                <div class="number">
+                                    <span>03</span>
+                                </div>
+                                <div class="other-content">
+                                    <a href="life-style.html">05 January, 2024</a>
+                                    <h6><a href="standard-formate.html">Foodie Diaries: Recipes for Every
+                                            Occasion</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="discover-content">
+                                <div class="number">
+                                    <span>01</span>
+                                </div>
+                                <div class="other-content">
+                                    <a href="life-style.html">05 January, 2024</a>
+                                    <h6><a href="standard-formate.html">Foodie Diaries: Recipes for Every
+                                            Occasion</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="discover-content">
+                                <div class="number">
+                                    <span>02</span>
+                                </div>
+                                <div class="other-content">
+                                    <a href="life-style.html">05 January, 2024</a>
+                                    <h6><a href="standard-formate.html">Foodie Diaries: Recipes for Every
+                                            Occasion</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="discover-content">
+                                <div class="number">
+                                    <span>03</span>
+                                </div>
+                                <div class="other-content">
+                                    <a href="life-style.html">05 January, 2024</a>
+                                    <h6><a href="standard-formate.html">Foodie Diaries: Recipes for Every
+                                            Occasion</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<div class="blog-post2">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="blog-border">
+                    <div class="category-and-select-area">
+                        <a href="life-style.html" class="category">
+                            Life Style
+                        </a>
+                        <br>
+                        <!-- <div class="select-area">
+                            <h6>Sort By:</h6>
+                            <select>
+                                <option value="1">Recent Post</option>
+                                <option value="2">Populer Post</option>
+                            </select>
+                        </div> -->
+                    </div>
+                    <div class="row g-4 gy-5">
+                        {%for post in random_posts%}
+                        <div class="col-md-6">
+                            <div class="blog-card">
+                                <div class="blog-card-img-wrap">
+                                    <a href="standard-formate.html">
+                                        <img src="{%static 'assets/image/blog-img-1.png'%}" alt>
+                                    </a>
+                                    <a href="life-style.html">
+                                        <span>{{post.category}}</span>
+                                    </a>
+                                </div>
+                                <div class="blog-content">
+                                    <div class="author-area">
+                                        <ul>
+                                            <li>
+                                                <a href="editor-profile.html">{{post.author}}</a>
+                                            </li>
+                                            <li>
+                                                <a class="publish-date" href="life-style.html">
+                                                    <svg width="6" height="6" viewBox="0 0 6 6" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <circle cx="3" cy="3" r="3" fill="#C4C4C4" />
+                                                    </svg>
+                                                    {{post.publish | date}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <h5>
+                                        <a href="{%url 'blog:post-detail' post.publish.year post.publish.month post.publish.day post.slug%}">{{post.title}}</a>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        {%endfor%}
+                     
+                        <div class="view-all-btn">
+                            <a href="{%url 'blog:post-list'%}" class="view-btn hover-btn">
+                                View All
+                                <svg class="arrow" width="10" height="10" viewBox="0 0 10 10" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M1 9L9 1M9 1C7.22222 1.33333 3.33333 2 1 1M9 1C8.66667 2.66667 8 6.33333 9 9"
+                                        stroke="white" stroke-width="1.5" stroke-linecap="round"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contect-section">
+                    <h3>Subscribe To Get Update Latest Blog Post</h3>
+                    <div class="input-area">
+                        <input type="email" placeholder="Enter Email" class>
+                        <button type="submit">
+                            <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M15.9647 0.685806C16.0011 0.594942 16.01 0.495402 15.9904 0.399526C15.9707 0.303649 15.9233 0.215653 15.8541 0.146447C15.7849 0.0772403 15.6969 0.0298668 15.601 0.0101994C15.5052 -0.0094681 15.4056 -0.000564594 15.3147 0.0358061L0.76775 5.85481H0.76675L0.31475 6.03481C0.22914 6.06895 0.154635 6.1261 0.0994654 6.19994C0.0442956 6.27377 0.0106078 6.36142 0.00212322 6.4532C-0.00636132 6.54497 0.0106876 6.63731 0.0513867 6.72001C0.0920859 6.8027 0.154851 6.87254 0.23275 6.92181L0.64275 7.18181L0.64375 7.18381L5.63875 10.3618L8.81675 15.3568L8.81875 15.3588L9.07875 15.7688C9.12817 15.8464 9.19805 15.9089 9.28068 15.9493C9.36332 15.9897 9.45551 16.0066 9.54711 15.998C9.63871 15.9894 9.72617 15.9558 9.79985 15.9007C9.87354 15.8456 9.9306 15.7712 9.96475 15.6858L15.9647 0.685806ZM14.1317 2.57581L6.63775 10.0698L6.42275 9.73181C6.38336 9.66978 6.33078 9.6172 6.26875 9.57781L5.93075 9.36281L13.4247 1.86881L14.6027 1.39781L14.1327 2.57581H14.1317Z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                    <p>
+                        <svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_786_352)">
+                                <path
+                                    d="M12 6C12 7.5913 11.3679 9.11742 10.2426 10.2426C9.11742 11.3679 7.5913 12 6 12C4.4087 12 2.88258 11.3679 1.75736 10.2426C0.632141 9.11742 0 7.5913 0 6C0 4.4087 0.632141 2.88258 1.75736 1.75736C2.88258 0.632141 4.4087 0 6 0C7.5913 0 9.11742 0.632141 10.2426 1.75736C11.3679 2.88258 12 4.4087 12 6ZM9.0225 3.7275C8.96893 3.67411 8.90514 3.63208 8.83495 3.60391C8.76476 3.57574 8.68961 3.56202 8.61399 3.56356C8.53838 3.5651 8.46385 3.58187 8.39486 3.61288C8.32588 3.64388 8.26385 3.68848 8.2125 3.744L5.60775 7.06275L4.038 5.49225C3.93137 5.39289 3.79033 5.3388 3.64461 5.34137C3.49888 5.34394 3.35984 5.40297 3.25678 5.50603C3.15372 5.60909 3.09469 5.74813 3.09212 5.89386C3.08955 6.03958 3.14364 6.18062 3.243 6.28725L5.2275 8.2725C5.28096 8.32586 5.34462 8.36791 5.41469 8.39614C5.48475 8.42437 5.55979 8.43819 5.63531 8.43679C5.71083 8.43539 5.7853 8.4188 5.85427 8.38799C5.92324 8.35719 5.9853 8.31281 6.03675 8.2575L9.03075 4.515C9.13282 4.40887 9.18921 4.26696 9.18781 4.11972C9.1864 3.97248 9.12732 3.83166 9.02325 3.7275H9.0225Z" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_786_352">
+                                    <rect width="12" height="12" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        No Credit Card Required
+                    </p>
+                </div>
+                <!-- <div class="blog-border two">
+                    <div class="spot-light-btn">
+                        <a href="life-style.html">
+                            Spot Light
+                        </a>
+                    </div>
+                    <div class="row mb-40">
+                        <div class="col-lg-12">
+                            <ul class="nav nav-tabs" id="myTab5" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="travel-tab" data-bs-toggle="tab"
+                                        data-bs-target="#travel" type="button" role="tab" aria-controls="travel"
+                                        aria-selected="false" tabindex="-1">Travel</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="food-tab" data-bs-toggle="tab"
+                                        data-bs-target="#food" type="button" role="tab" aria-controls="food"
+                                        aria-selected="false" tabindex="-1">Food</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="fashion-tab" data-bs-toggle="tab"
+                                        data-bs-target="#fashion" type="button" role="tab" aria-controls="fashion"
+                                        aria-selected="false" tabindex="-1">Fashion</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="tech-tab" data-bs-toggle="tab"
+                                        data-bs-target="#tech" type="button" role="tab" aria-controls="tech"
+                                        aria-selected="true">Tech</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="beauty-tab" data-bs-toggle="tab"
+                                        data-bs-target="#beauty" type="button" role="tab" aria-controls="beauty"
+                                        aria-selected="true">Beauty</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="gaming-tab" data-bs-toggle="tab"
+                                        data-bs-target="#gaming" type="button" role="tab" aria-controls="gaming"
+                                        aria-selected="true">Gaming</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-lg-12">
+                            <div class="tab-content" id="myTabContent5">
+                                <div class="tab-pane fade show active" id="travel" role="tabpanel">
+                                    <div class="row g-4 gy-5">
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="{%static 'assets/image/travel-01.png'%}" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Travel</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Robert Kcarery</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    08 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Pairing Wine with
+                                                            Gastronomic Delights.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="{%static 'assets/image/travel-02.png'%}" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Travel</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Dr. Samuel Nathan</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    10 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Books to Inspire Your Next
+                                                            Adventure.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="{%static 'assets/image/travel-03.png'%}" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Travel</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Dr. Michael
+                                                                    Patrick</a></li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    14 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Digital Digest:Weekly Tech
+                                                            Updates You Can't
+                                                            Miss</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="{%static 'assets/image/travel-04.png'%}" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Travel</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Dr. James Nathan</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    04 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Defining Your Unique Fashion
+                                                            Statement.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                   
+                                        <div class="load-more-btn">
+                                            <a href="life-style.html" class="hover-btn">
+                                                LOAD MORE
+                                                <svg class="arrow" width="10" height="10" viewBox="0 0 10 10"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M1 9L9 1M9 1C7.22222 1.33333 3.33333 2 1 1M9 1C8.66667 2.66667 8 6.33333 9 9"
+                                                        stroke="#191919" stroke-width="1.5"
+                                                        stroke-linecap="round" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade " id="food" role="tabpanel">
+                                    <div class="row g-4 gy-5">
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/food-01.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Food</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Robert Kcarery</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    08 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Pairing Wine with
+                                                            Gastronomic Delights.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/food-02.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Food</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Dr. Samuel Nathan</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    10 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Books to Inspire Your Next
+                                                            Adventure.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/food-03.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Food</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Dr. Michael
+                                                                    Patrick</a></li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    14 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Digital Digest:Weekly Tech
+                                                            Updates You Can't
+                                                            Miss</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/food-04.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Food</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Dr. James Nathan</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    04 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Defining Your Unique Fashion
+                                                            Statement.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/food-05.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Food</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Jasmine Quinn</a></li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    14 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Defining Your Unique Fashion
+                                                            Statement.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/food-06.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Food</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Gabriel Harrison</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    04 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Gaming Gazette: Breaking
+                                                            News and Trending
+                                                            Topics.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="load-more-btn">
+                                            <a href="life-style.html" class="hover-btn">
+                                                LOAD MORE
+                                                <svg class="arrow" width="10" height="10" viewBox="0 0 10 10"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M1 9L9 1M9 1C7.22222 1.33333 3.33333 2 1 1M9 1C8.66667 2.66667 8 6.33333 9 9"
+                                                        stroke="#191919" stroke-width="1.5"
+                                                        stroke-linecap="round" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade " id="fashion" role="tabpanel">
+                                    <div class="row g-4 gy-5">
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/fashion-01.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Fashion</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Robert Kcarery</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    08 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Pairing Wine with
+                                                            Gastronomic Delights.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/fashion-02.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Fashion</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Dr. Samuel Nathan</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    10 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Books to Inspire Your Next
+                                                            Adventure.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/fashion-03.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Fashion</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Dr. Michael
+                                                                    Patrick</a></li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    14 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Digital Digest:Weekly Tech
+                                                            Updates You Can't
+                                                            Miss</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/fashion-04.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Fashion</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Dr. James Nathan</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    04 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Defining Your Unique Fashion
+                                                            Statement.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/fashion-05.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Fashion</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Jasmine Quinn</a></li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    14 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Defining Your Unique Fashion
+                                                            Statement.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/fashion-06.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Fashion</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Gabriel Harrison</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    04 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Gaming Gazette: Breaking
+                                                            News and Trending
+                                                            Topics.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="load-more-btn">
+                                            <a href="life-style.html" class="hover-btn">
+                                                LOAD MORE
+                                                <svg class="arrow" width="10" height="10" viewBox="0 0 10 10"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M1 9L9 1M9 1C7.22222 1.33333 3.33333 2 1 1M9 1C8.66667 2.66667 8 6.33333 9 9"
+                                                        stroke="#191919" stroke-width="1.5"
+                                                        stroke-linecap="round" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade " id="tech" role="tabpanel">
+                                    <div class="row g-4 gy-5">
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/tech-01.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Tech</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Robert Kcarery</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    08 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Pairing Wine with
+                                                            Gastronomic Delights.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/tech-02.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Tech</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Dr. Samuel Nathan</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    10 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Books to Inspire Your Next
+                                                            Adventure.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/tech-03.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Tech</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Dr. Michael
+                                                                    Patrick</a></li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    14 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Digital Digest:Weekly Tech
+                                                            Updates You Can't
+                                                            Miss</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/tech-04.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Tech</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Dr. James Nathan</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    04 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Defining Your Unique Fashion
+                                                            Statement.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/tech-05.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Tech</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Jasmine Quinn</a></li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    14 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Defining Your Unique Fashion
+                                                            Statement.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/tech-06.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Tech</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Gabriel Harrison</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    04 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Gaming Gazette: Breaking
+                                                            News and Trending
+                                                            Topics.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="load-more-btn">
+                                            <a href="life-style.html" class="hover-btn">
+                                                LOAD MORE
+                                                <svg class="arrow" width="10" height="10" viewBox="0 0 10 10"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M1 9L9 1M9 1C7.22222 1.33333 3.33333 2 1 1M9 1C8.66667 2.66667 8 6.33333 9 9"
+                                                        stroke="#191919" stroke-width="1.5"
+                                                        stroke-linecap="round" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade " id="beauty" role="tabpanel">
+                                    <div class="row g-4 gy-5">
+                                        <div class="col-lg-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/beauty-01.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Beauty</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Robert Kcarery</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    08 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Pairing Wine with
+                                                            Gastronomic Delights.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/beauty-02.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Beauty</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Dr. Samuel Nathan</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    10 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Books to Inspire Your Next
+                                                            Adventure.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/beauty-03.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Beauty</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Dr. Michael
+                                                                    Patrick</a></li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    14 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Digital Digest:Weekly Tech
+                                                            Updates You Can't
+                                                            Miss</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/beauty-04.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Beauty</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Dr. James Nathan</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    04 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Defining Your Unique Fashion
+                                                            Statement.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/beauty-05.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Beauty</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Jasmine Quinn</a></li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    14 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Defining Your Unique Fashion
+                                                            Statement.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/beauty-06.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Beauty</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Gabriel Harrison</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    04 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Gaming Gazette: Breaking
+                                                            News and Trending
+                                                            Topics.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="load-more-btn">
+                                            <a href="life-style.html" class="hover-btn">
+                                                LOAD MORE
+                                                <svg class="arrow" width="10" height="10" viewBox="0 0 10 10"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M1 9L9 1M9 1C7.22222 1.33333 3.33333 2 1 1M9 1C8.66667 2.66667 8 6.33333 9 9"
+                                                        stroke="#191919" stroke-width="1.5"
+                                                        stroke-linecap="round" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade " id="gaming" role="tabpanel">
+                                    <div class="row g-4 gy-5">
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/gaming-01.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Gaming</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Robert Kcarery</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    08 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Pairing Wine with
+                                                            Gastronomic Delights.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/gaming-02.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Gaming</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Dr. Samuel Nathan</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    10 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Books to Inspire Your Next
+                                                            Adventure.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/gaming-03.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Gaming</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Dr. Michael
+                                                                    Patrick</a></li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    14 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Digital Digest:Weekly Tech
+                                                            Updates You Can't
+                                                            Miss</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/gaming-04.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Gaming</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Dr. James Nathan</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    04 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Defining Your Unique Fashion
+                                                            Statement.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/gaming-05.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Gaming</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Jasmine Quinn</a></li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    14 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Defining Your Unique Fashion
+                                                            Statement.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="blog-card">
+                                                <div class="blog-card-img-wrap">
+                                                    <a href="standard-formate.html">
+                                                        <img src="assets/image/index-img/gaming-06.png" alt>
+                                                    </a>
+                                                    <a href="life-style.html"><span>Gaming</span>
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+                                                    <div class="author-area">
+                                                        <ul>
+                                                            <li><a href="editor-profile.html">Gabriel Harrison</a>
+                                                            </li>
+                                                            <li><a class="publish-date" href="life-style.html">
+                                                                    <svg width="6" height="6" viewBox="0 0 6 6"
+                                                                        fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <circle cx="3" cy="3" r="3"
+                                                                            fill="#C4C4C4" />
+                                                                    </svg>
+                                                                    04 Jan, 2024</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h5><a href="standard-formate.html">Gaming Gazette: Breaking
+                                                            News and Trending
+                                                            Topics.</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="load-more-btn">
+                                            <a href="life-style.html" class="hover-btn">
+                                                LOAD MORE
+                                                <svg class="arrow" width="10" height="10" viewBox="0 0 10 10"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M1 9L9 1M9 1C7.22222 1.33333 3.33333 2 1 1M9 1C8.66667 2.66667 8 6.33333 9 9"
+                                                        stroke="#191919" stroke-width="1.5"
+                                                        stroke-linecap="round" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <div class="col-lg-4">
+                <div class="life-style-sidebar">
+                    <div class="sidebar-widget driscription">
+                        <div class="header-logo pb-15">
+                            <a href="/"><img alt="image" class="img-fluid dark"
+                                    src="{%static 'assets/image/quirkpress-dark.png' %}"></a>
+                            <a href="/"><img alt="image" class="img-fluid light"
+                                    src="{%static 'assets/image/quirkpress-light.png'%}"></a>
+                        </div>
+                        <p>QuirkPress is a lively blog that celebrates the unconventional with quirky trends, unique lifestyle tips, and offbeat stories.</p>
+                        
+                    </div>
+                    <div class="sidebar-widget featured-post">
+                        <h6>Featured Post</h6>
+                        {%for post in featured_posts %}
+                        <div class="recent-post mb-20">
+                            <div class="recent-post-img">
+                                <a href="{%url 'blog:post-detail' post.publish.year post.publish.month post.publish.day post.slug%}"><img src="{%static 'assets/image/sidebar-img1.png'%}"
+                                        alt></a>
+                            </div>
+                            <div class="recent-post-content">
+                                <p>{{post.publish | date}}</p>
+                                <h5><a href="{%url 'blog:post-detail' post.publish.year post.publish.month post.publish.day post.slug%}">{{post.title}}</a></h5>
+                            </div>
+                        </div>
+                        {%endfor%}
+                   
+                        
+                    </div>
+                    <!-- <div class="sidebar-widget discover-post">
+                        <h6 class="discover-title">Discover By Tags
+                            <svg class="arrow" width="10" height="10" viewBox="0 0 10 10" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M1 9L9 1M9 1C7.22222 1.33333 3.33333 2 1 1M9 1C8.66667 2.66667 8 6.33333 9 9"
+                                    stroke="white" stroke-width="1.5" stroke-linecap="round"></path>
+                            </svg>
+                        </h6>
+                        <ul class="category">
+                            <li>
+                                <a href="life-style.html">Beauty (10)</a>
+                            </li>
+                            <li>
+                                <a href="life-style.html">Gaming Tips (05)</a>
+                            </li>
+                            <li>
+                                <a href="life-style.html">Fashion (02)</a>
+                            </li>
+                            <li>
+                                <a href="life-style.html">Tech (03)</a>
+                            </li>
+                            <li>
+                                <a href="life-style.html">Parenting (03)</a>
+                            </li>
+                            <li>
+                                <a href="life-style.html">Health (03)</a>
+                            </li>
+                            <li>
+                                <a href="life-style.html">Events (04)</a>
+                            </li>
+                            <li>
+                                <a href="life-style.html">Art (03)</a>
+                            </li>
+                            <li>
+                                <a href="life-style.html">Food (06)</a>
+                            </li>
+                            <li>
+                                <a href="life-style.html">Travel (02)</a>
+                            </li>
+                        </ul>
+                    </div> -->
+                    <div class="sidebar-widget about-section mb-40">
+                        <ul class="category">
+                            <li>
+                            <a href="{%url 'blog:about'%}">About Us</a>
+                            </li>
+                            <li>
+                            <a href="{%url 'blog:terms'%}">Terms &amp; Conditions</a>
+                            </li>
+                            <li>
+                            <a href="{%url 'blog:privacy-policy'%}">Privacy Policy</a>
+                            </li>
+                            </ul>
+                    </div>
+                    <!-- <a href="https://themeforest.net/item/axleo-digital-agency-creative-portfolio-template/51144673"
+                        class="sidebar-add-image">
+                        <img src="assets/image/life-style/Sidebar-ads.png" alt>
+                    </a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pt-100"></div>
+
+
+
+{%endblock content%}
